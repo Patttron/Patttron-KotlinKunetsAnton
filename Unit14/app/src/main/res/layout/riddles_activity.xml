@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.541" />
 
     <TextView
-        android:id="@+id/finishAnswer"
+        android:id="@+id/rightAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
@@ -50,7 +50,7 @@
         android:id="@+id/show_me_riddles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show me riddles"
+        android:text="Show me riddle"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
