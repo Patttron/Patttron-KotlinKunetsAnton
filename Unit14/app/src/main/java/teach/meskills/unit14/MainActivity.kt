@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
                     this, FormatLetters::class.java
                 )
             )
+            // Новый комит для тренировки
         }
         magicBall.setOnClickListener {
             startActivity(
