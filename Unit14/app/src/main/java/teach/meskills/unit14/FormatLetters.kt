@@ -6,12 +6,12 @@ import android.widget.EditText
 import android.os.Bundle
 
 class FormatLetters : AppCompatActivity() {
-   lateinit var btnSort:Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.format_letters_activity)
         val formatLetters = findViewById<Button>(R.id.format_button)
-         btnSort= findViewById(R.id.btnSort)
+
         val inputText = findViewById<EditText>(R.id.text)
         formatLetters.setOnClickListener {
             var formattedText = ""
@@ -25,36 +25,35 @@ class FormatLetters : AppCompatActivity() {
                 }
                 formattedText += array[i]
             }
-            inputText.setText(formattedText)
-        }
 
-        btnSort.setOnClickListener {
-           var str:String= inputText.text.toString()
-            var helpStr=""
-          val  ch=str.toCharArray()
-            val cats = mutableListOf<String>()
-            for (i in 0 until ch.size ) {
-                helpStr=helpStr+ch[i]
-                if (ch[i]==' '||i==ch.size-1 ){
-                    helpStr.trim()
-                    cats.add(helpStr)
-                    helpStr=""
+            // inputText.setText(formattedText) закоментировал
+
+            var helpStr = ""                       // создадим вспомогательную строковую переменную в которую будем по буквам собирать слова
+            val ch = formattedText.toCharArray() // создадим чаровый массив из уже отформатированной пользовательской строки
+            val words = mutableListOf<String>() // создадим лист для хранения полученных отдельных слов
+            for (i in 0 until ch.size) {       // пробежимся фором по чаровому массиву по буквам собирая слова
+                helpStr = helpStr + ch[i]
+                if (ch[i] == ' ' || i == ch.size - 1) { // натыкаясь на пробел или на конец строки ( чарового массива в данном случае ), кладем слово в лист
+                    helpStr.trim()             // предварительно обрежим пробел с конца слова , чтоб не мешал
+                    words.add(helpStr)         //теперь кладем в лист
+                    helpStr =
+                        ""                 // и обнуляем строку , чтоб после пробела собиралось следующее слово а не наклеивалось на предыдущее
                 }
             }
-            inputText.setText("")
+            inputText.setText("")           // теперь обнулим эдитТекст, чтоб вдальнейшем при использовании inputText.append(it+" ") текст не склеивался с предыдущим
 
-            cats.sortWith(
+            words.sortWith(                // отсортируем повозрастанию, спасибо котлин
                 Comparator { cat1, cat2 ->
                     cat1.length - cat2.length
                 }
             )
-
-            cats.forEach {
-               // println("${it.name}: ${it.age}, ${it.weight}")
-
-                inputText.append(it+" ")
+// бежим по отсортированному массиву форычем и добавляем по слову с пробелом в эдитТекст за каждую итерацию
+            words.forEach {
+            inputText.append(it + " ")
             }
         }
+
+
 
 
     }
