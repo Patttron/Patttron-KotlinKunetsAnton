@@ -3,15 +3,11 @@ package teach.meskills.unit17
 import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
-import android.text.TextUtils
 import android.widget.Button
 import android.widget.Chronometer
 import android.widget.EditText
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import org.w3c.dom.Text
-import java.util.*
 
 class Timer : AppCompatActivity() {
 
@@ -59,10 +55,3 @@ class Timer : AppCompatActivity() {
         }
     }
 }
-//if ((TextUtils.isEmpty(this.num1.getText().toString())
-//|| TextUtils.isEmpty(this.num2.getText().toString()))){
-//    return
-//}
-//
-//num1 = this.num1.getText().toString().toFloat()
-//num2 = this.num2.getText().toString().toFloat()
