@@ -40,20 +40,24 @@ class FormatLetters : AppCompatActivity() {
 
             // inputText.setText(formattedText) закоментировал
 
-            var helpStr = ""                                 // создадим вспомогательную строковую переменную в которую будем по буквам собирать слова
-            var str = ""                                  // создадим вспомогательную строковую переменную в которую будем по буквам собирать слова и еще менять цифры на слова
-            val ch = (formattedText+" ").toCharArray()             // создадим чаровый массив из уже отформатированной пользовательской строки
+            var helpStr =
+                ""                                 // создадим вспомогательную строковую переменную в которую будем по буквам собирать слова
+            var str =
+                ""                                  // создадим вспомогательную строковую переменную в которую будем по буквам собирать слова и еще менять цифры на слова
+            val ch =
+                (formattedText + " ").toCharArray()             // создадим чаровый массив из уже отформатированной пользовательской строки
 
-            for ( i in 0 until ch.size) {
+            for (i in 0 until ch.size) {
                 if (ch[i] == '1' && ch[i + 1] == '0') {
                     str = str + "десять "
                 } else if (numberMap.containsKey(ch[i].toString())) {
-                    str = str + numberMap.getValue(ch[i].toString()) + " "
-                } else { if (ch[i]=='0'&& ch[i-1]=='1'){
-                    continue
-                }else {
-                    str = str + ch[i]
-                }
+                    str = str + numberMap.getValue(ch[i].toString())
+                } else {
+                    if (ch[i] == '0' && ch[i - 1] == '1') {
+                        continue
+                    } else {
+                        str = str + ch[i]
+                    }
                 }
             }
             val numbersAsWordsCharArray =
@@ -63,8 +67,8 @@ class FormatLetters : AppCompatActivity() {
             for (i in 0 until numbersAsWordsCharArray.size) {       // пробежимся фором по чаровому массиву по буквам собирая слова
                 helpStr = helpStr + numbersAsWordsCharArray[i]
                 if (numbersAsWordsCharArray[i] == ' ' || i == numbersAsWordsCharArray.size - 1) {         // натыкаясь на пробел или на конец строки ( чарового массива в данном случае ), кладем слово в лист
-                    helpStr.trim()                                           // предварительно обрежим пробел с конца слова , чтоб не мешал
-                    words.add(helpStr)                                     //теперь кладем в лист
+                    // предварительно обрежим пробел с конца слова , чтоб не мешал
+                    words.add(helpStr.trim())                                     //теперь кладем в лист
                     helpStr =
                         ""                                        // и обнуляем строку , чтоб после пробела собиралось следующее слово, а не наклеивалось на предыдущее
                 }
@@ -75,12 +79,18 @@ class FormatLetters : AppCompatActivity() {
                 Comparator { cat1, cat2 ->
                     cat1.length - cat2.length
                 }
+
             )
-// бежим по отсортированному массиву форычем и добавляем по слову с пробелом в эдитТекст за каждую итерацию
+
+            var finaleS=""
+// бежим по отсортированному массиву форычем и добавляем по слову в конечную строку за каждую итерацию
             words.forEach {
-                inputText.append(it + " ")
+
+                finaleS= finaleS+it+" "
+
             }
 
+            inputText.setText(finaleS.trim())
 
         }
 
