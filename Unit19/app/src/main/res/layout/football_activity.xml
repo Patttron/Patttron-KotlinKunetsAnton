@@ -25,7 +25,6 @@
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/background"
         app:layout_constraintTop_toTopOf="@+id/background" />
 
@@ -38,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/topView"
         app:layout_constraintTop_toTopOf="@+id/topView"
-        app:layout_constraintVertical_bias="0.0"/>
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/strip"
@@ -69,25 +68,9 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <View
-        android:id="@+id/secondTeam"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/logo_lazio"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toBottomOf="@+id/topView"
-        app:layout_constraintEnd_toEndOf="@+id/topView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/topView"
-        app:layout_constraintTop_toBottomOf="@+id/firstTeam"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <View
-        android:id="@+id/firstTeam"
+        android:id="@+id/firstTeamLogo"
         android:layout_width="30dp"
-        android:layout_height="20dp"
+        android:layout_height="22dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/logo_napoli"
@@ -98,6 +81,20 @@
         app:layout_constraintTop_toTopOf="@+id/topView"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
+    <View
+        android:id="@+id/secondTeamLogo"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/logo_lazio"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@+id/topView"
+        app:layout_constraintEnd_toEndOf="@+id/firstTeamLogo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/topView"
+        app:layout_constraintTop_toBottomOf="@+id/firstTeamLogo"
+        app:layout_constraintVertical_bias="0.166" />
 
     <View
         android:id="@+id/square"
@@ -113,57 +110,75 @@
         app:layout_constraintTop_toTopOf="@+id/topView"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <TextView
-        android:id="@+id/tvFirstTeam"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
+        android:id="@+id/tvStats"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="Stats"
+        android:textColor="#1d125d"
+        android:textSize="8sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/square"
+        app:layout_constraintStart_toStartOf="@+id/square"
+        app:layout_constraintTop_toTopOf="@+id/square"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/nameFirstTeam"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="25dp"
+        android:ellipsize="end"
         android:fontFamily="sans-serif"
+        android:maxLines="1"
+        android:singleLine="true"
         android:textColor="#1d125d"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/topView"
-        app:layout_constraintEnd_toEndOf="@+id/topView"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="@+id/firstTeamLogo"
+        app:layout_constraintEnd_toStartOf="@+id/firstScore"
         app:layout_constraintStart_toStartOf="@+id/topView"
-        app:layout_constraintTop_toTopOf="@+id/topView"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="@+id/firstTeamLogo"
         tools:text="Napoli" />
 
     <TextView
-        android:id="@+id/tvSecondTeam"
-        android:layout_width="39dp"
+        android:id="@+id/nameSecondTeam"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="13dp"
+        android:ellipsize="end"
         android:fontFamily="sans-serif"
+        android:maxLines="1"
         android:textColor="#1d125d"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/topView"
-        app:layout_constraintEnd_toEndOf="@+id/topView"
+        app:layout_constraintBottom_toBottomOf="@+id/secondTeamLogo"
+        app:layout_constraintEnd_toStartOf="@+id/secondScore"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/topView"
-        app:layout_constraintTop_toBottomOf="@+id/tvFirstTeam"
-        app:layout_constraintVertical_bias="0.047"
+        app:layout_constraintStart_toStartOf="@+id/nameFirstTeam"
+        app:layout_constraintTop_toTopOf="@+id/secondTeamLogo"
+
         tools:text="Lazio" />
 
     <TextView
         android:id="@+id/firstScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="sans-serif"
         android:textColor="#1d125d"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/topView"
+        app:layout_constraintBottom_toBottomOf="@+id/nameFirstTeam"
         app:layout_constraintEnd_toStartOf="@+id/strip"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/topView"
-        app:layout_constraintTop_toTopOf="@+id/topView"
+        app:layout_constraintTop_toTopOf="@+id/nameFirstTeam"
         app:layout_constraintVertical_bias="0.0"
         tools:text="2" />
 
@@ -176,12 +191,12 @@
         android:textColor="#1d125d"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
+        app:layout_constraintBottom_toBottomOf="@+id/nameSecondTeam"
         app:layout_constraintEnd_toStartOf="@+id/strip"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/topView"
-        app:layout_constraintTop_toTopOf="@+id/topView"
-        app:layout_constraintVertical_bias="0.623"
+        app:layout_constraintTop_toTopOf="@+id/nameSecondTeam"
+        app:layout_constraintVertical_bias="0.255"
         tools:text="0" />
 
     <View
@@ -200,25 +215,6 @@
         app:layout_constraintTop_toTopOf="@+id/square"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/tvStats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="14dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Stats"
-        android:textColor="#1d125d"
-        android:textSize="8sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/square"
-        app:layout_constraintEnd_toEndOf="@+id/square"
-        app:layout_constraintStart_toStartOf="@+id/square"
-        app:layout_constraintTop_toTopOf="@+id/square"
-        tools:ignore="SmallSp" />
 
     <TextView
         android:id="@+id/tvField"
