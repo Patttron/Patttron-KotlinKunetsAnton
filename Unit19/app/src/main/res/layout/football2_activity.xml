@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:background="#fcfcfc" />
+
+    <View
+        android:id="@+id/background2"
+        android:layout_width="match_parent"
+        android:layout_height="138dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:background="#ffffff" />
+
+    <View
+        android:id="@+id/tvSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignStart="@+id/background2"
+        android:layout_alignEnd="@+id/background2"
+        android:layout_alignBottom="@+id/background2"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="16dp"
+        android:background="#d9d9d9" />
+
+    <View
+        android:id="@+id/firstTeamLogo"
+        android:layout_width="30dp"
+        android:layout_height="22dp"
+        android:layout_alignStart="@+id/background2"
+        android:layout_alignTop="@+id/background2"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/logo_napoli" />
+
+    <View
+        android:id="@+id/secondTeamLogo"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignStart="@+id/background2"
+        android:layout_alignTop="@+id/firstTeamLogo"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/logo_lazio" />
+
+    <TextView
+        android:id="@+id/nameFirstTeam"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/firstTeamLogo"
+        android:layout_alignTop="@+id/firstTeamLogo"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="0dp"
+        android:layout_toStartOf="@+id/firstScore"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif"
+        android:lines="1"
+        android:singleLine="true"
+        android:textColor="#1d125d"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Napoli" />
+
+    <TextView
+        android:id="@+id/nameSecondTeam"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/secondTeamLogo"
+        android:layout_alignTop="@+id/secondTeamLogo"
+        android:layout_alignBottom="@+id/secondTeamLogo"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="0dp"
+        android:layout_toStartOf="@+id/secondScore"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif"
+        android:lines="1"
+        android:singleLine="true"
+        android:textColor="#1d125d"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Lazio" />
+
+    <View
+        android:id="@+id/square"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignTop="@+id/background2"
+        android:layout_alignEnd="@+id/background2"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="27dp"
+        android:background="@drawable/stats_button"
+        android:gravity="center_horizontal" />
+
+    <View
+        android:id="@+id/strip"
+        android:layout_width="1dp"
+        android:layout_height="56dp"
+        android:layout_alignTop="@+id/background2"
+        android:layout_alignEnd="@+id/square"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="28dp"
+        android:background="#d9d9d9" />
+
+    <View
+        android:id="@+id/strip2"
+        android:layout_width="1dp"
+        android:layout_height="56dp"
+        android:layout_alignStart="@+id/square"
+        android:layout_alignTop="@+id/background2"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="28dp"
+        android:background="#d9d9d9" />
+
+    <TextView
+        android:id="@+id/firstScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/background2"
+        android:layout_alignEnd="@+id/square"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="89dp"
+        android:fontFamily="sans-serif"
+        android:textColor="#1d125d"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="2" />
+
+    <TextView
+        android:id="@+id/secondScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/firstScore"
+        android:layout_alignEnd="@+id/square"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="87dp"
+        android:fontFamily="sans-serif"
+        android:textColor="#1d125d"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="0" />
+
+    <View
+        android:id="@+id/iconStats"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignStart="@+id/square"
+        android:layout_alignTop="@+id/square"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/stats_icon" />
+
+    <TextView
+        android:id="@+id/tvStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/square"
+        android:layout_alignTop="@+id/square"
+        android:layout_alignEnd="@+id/square"
+        android:layout_marginTop="32dp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="Stats"
+        android:textColor="#1d125d"
+        android:textSize="8sp"
+        android:textStyle="normal"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/tvField"
+        android:layout_width="16dp"
+        android:layout_height="56dp"
+        android:layout_alignStart="@+id/square"
+        android:layout_alignTop="@+id/background2"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="24dp"
+        android:background="#1d125d"
+        android:gravity="right"
+        tools:ignore="RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/tvArrow"
+        android:layout_width="4dp"
+        android:layout_height="8dp"
+        android:layout_alignStart="@+id/tvField"
+        android:layout_alignTop="@+id/tvField"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/arrow_button"
+        android:textColor="#00e8da" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:layout_alignStart="@+id/background"
+        android:layout_alignTop="@+id/background"
+        android:layout_alignEnd="@+id/background"
+        android:background="#1d125d" />
+
+</RelativeLayout>
