@@ -9,8 +9,10 @@ import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 import java.util.ArrayList
 
-class Checkboxes : AppCompatActivity(), View.OnClickListener {
+class Checkboxes : AppCompatActivity() {
     companion object {
+        const val EXTRA = "Students"
+
         @SuppressLint("StaticFieldLeak")
         var btnOk: Button? = null
         var studentsArray = ArrayList<String>()
@@ -43,7 +45,9 @@ class Checkboxes : AppCompatActivity(), View.OnClickListener {
         studentsArray.add(9, "Anton")
         studentsArray.add(10, "Nastya")
         btnOk = findViewById(R.id.btnOk)
-        btnOk!!.setOnClickListener(this)
+        btnOk!!.setOnClickListener {
+            sendResult()
+        }
     }
 
     fun onCheckboxClick(view: View?) {
@@ -108,10 +112,10 @@ class Checkboxes : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    override fun onClick(v: View?) {
-        val intent = Intent()
-        intent.putExtra("array", students)
-        setResult(RESULT_OK, intent)
+    private fun sendResult() {
+        setResult(RESULT_OK, Intent().apply {
+            putExtra(EXTRA, students)
+        })
         finish()
     }
 }

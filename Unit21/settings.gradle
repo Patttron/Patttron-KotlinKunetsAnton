@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Unit21"
 include ':twoActivity'
+include ':twoFragments'
