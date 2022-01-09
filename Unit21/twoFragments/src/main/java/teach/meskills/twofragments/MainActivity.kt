@@ -6,11 +6,11 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    private val chooseStudents: Button = findViewById(R.id.choose)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val chooseStudents: Button = findViewById(R.id.choose)
         chooseStudents.setOnClickListener {
             if (savedInstanceState == null) {
                 val fragment = CheckboxesFragment.newInstance()
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.container, fragment)
                     .addToBackStack(null)
                     .commit()
-                chooseStudents.visibility = View.INVISIBLE
+//                chooseStudents.visibility = View.INVISIBLE
             }
         }
         supportFragmentManager
