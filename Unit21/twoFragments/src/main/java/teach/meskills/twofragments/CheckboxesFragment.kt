@@ -1,190 +1,122 @@
 package teach.meskills.twofragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.CompoundButton
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import java.util.ArrayList
 
-class CheckboxesFragment : Fragment() {
+class CheckboxesFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
     companion object {
-        const val EXTRA = "Students"
-
-        @SuppressLint("StaticFieldLeak")
-        var btnOk: Button? = null
-        var studentsArray = ArrayList<String>()
-        var students = ArrayList<String>()
+        const val REQUEST_KEY = "students"
+        const val BUNDLE_KEY = "bundleStudents"
+        fun newInstance(): CheckboxesFragment {
+            return CheckboxesFragment()
+        }
     }
+
+    var students = ArrayList<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         return inflater.inflate(R.layout.checkboxes_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        view.findViewById<CheckBox?>(R.id.Stas)
-        view.findViewById<CheckBox?>(R.id.Alex)
-        view.findViewById<CheckBox?>(R.id.Sasha)
-        view.findViewById<CheckBox?>(R.id.Marina)
-        view.findViewById<CheckBox?>(R.id.Nadezhda)
-        view.findViewById<CheckBox?>(R.id.Natali)
-        view.findViewById<CheckBox?>(R.id.Dasha)
-        view.findViewById<CheckBox?>(R.id.Dima)
-        view.findViewById<CheckBox?>(R.id.Egor)
-        view.findViewById<CheckBox?>(R.id.Anton)
-        view.findViewById<CheckBox?>(R.id.Nastya)
-        studentsArray.add(0, "Stas")
-        studentsArray.add(1, "Alex")
-        studentsArray.add(2, "Sasha")
-        studentsArray.add(3, "Marina")
-        studentsArray.add(4, "Nadezhda")
-        studentsArray.add(5, "Natasha")
-        studentsArray.add(6, "Dasha")
-        studentsArray.add(7, "Dima")
-        studentsArray.add(8, "Egor")
-        studentsArray.add(9, "Anton")
-        studentsArray.add(10, "Nastya")
-        if( view is CheckBox) {
-            val checked : Boolean = view.isChecked
-            when (view.getId()) {
-                R.id.Stas -> if (checked) {
-                    students.add(studentsArray[0])
+        view.findViewById<CheckBox?>(R.id.Stas).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Alex).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Sasha).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Marina).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Nadezhda).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Natali).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Dasha).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Dima).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Egor).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Anton).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Nastya).setOnCheckedChangeListener(this)
+        view.findViewById<CheckBox?>(R.id.Nastya).setOnCheckedChangeListener(this)
+        view.findViewById<Button>(R.id.btnOk).setOnClickListener {
+            sendResult(students)
+        }
+    }
+
+    override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+        if (buttonView != null) {
+            when (buttonView.id) {
+                R.id.Stas -> if (isChecked) {
+                    students.add("Stas")
                 } else {
-                    students.removeAt(0)
+                    students.remove("Stas")
                 }
-                R.id.Alex -> if (checked) {
-                    students.add(studentsArray[1])
+                R.id.Alex -> if (isChecked) {
+                    students.add("Alex")
                 } else {
-                    students.removeAt(1)
+                    students.remove("Alex")
                 }
-                R.id.Sasha -> if (checked) {
-                    students.add(studentsArray[2])
+                R.id.Sasha -> if (isChecked) {
+                    students.add("Sasha")
                 } else {
-                    students.removeAt(2)
+                    students.remove("Sasha")
                 }
-                R.id.Marina -> if (checked) {
-                    students.add(studentsArray[3])
+                R.id.Marina -> if (isChecked) {
+                    students.add("Marina")
                 } else {
-                    students.removeAt(3)
+                    students.remove("Marina")
                 }
-                R.id.Nadezhda -> if (checked) {
-                    students.add(studentsArray[4])
+                R.id.Nadezhda -> if (isChecked) {
+                    students.add("Nadezhda")
                 } else {
-                    students.removeAt(4)
+                    students.remove("Nadezhda")
                 }
-                R.id.Natali -> if (checked) {
-                    students.add(studentsArray[5])
+                R.id.Natali -> if (isChecked) {
+                    students.add("Natasha")
                 } else {
-                    students.removeAt(5)
+                    students.remove("Natasha")
                 }
-                R.id.Dasha -> if (checked) {
-                    students.add(studentsArray[6])
+                R.id.Dasha -> if (isChecked) {
+                    students.add("Dasha")
                 } else {
-                    students.removeAt(6)
+                    students.remove("Dasha")
                 }
-                R.id.Dima -> if (checked) {
-                    students.add(studentsArray[7])
+                R.id.Dima -> if (isChecked) {
+                    students.add("Dima")
                 } else {
-                    students.removeAt(7)
+                    students.remove("Dima")
                 }
-                R.id.Egor -> if (checked) {
-                    students.add(studentsArray[8])
+                R.id.Egor -> if (isChecked) {
+                    students.add("Egor")
                 } else {
-                    students.removeAt(8)
+                    students.remove("Egor")
                 }
-                R.id.Anton -> if (checked) {
-                    students.add(studentsArray[9])
+                R.id.Anton -> if (isChecked) {
+                    students.add("Anton")
                 } else {
-                    students.removeAt(9)
+                    students.remove("Anton")
                 }
-                R.id.Nastya -> if (checked) {
-                    students.add(studentsArray[10])
+                R.id.Nastya -> if (isChecked) {
+                    students.add("Nastya")
                 } else {
-                    students.removeAt(10)
+                    students.remove("Nastya")
                 }
             }
         }
-//        btnOk = view.findViewById(R.id.btnOk)
-
-//        btnOk!!.setOnClickListener {
-//            sendResult()
-//        }
     }
 
-//    private fun onCheckboxClick(view: View?) {
-//        val checkBox = view as CheckBox
-//        val checked = checkBox.isChecked
-//        when (view.getId()) {
-//            R.id.Stas -> if (checked) {
-//                students.add(studentsArray[0])
-//            } else {
-//                students.removeAt(0)
-//            }
-//            R.id.Alex -> if (checked) {
-//                students.add(studentsArray[1])
-//            } else {
-//                students.removeAt(1)
-//            }
-//            R.id.Sasha -> if (checked) {
-//                students.add(studentsArray[2])
-//            } else {
-//                students.removeAt(2)
-//            }
-//            R.id.Marina -> if (checked) {
-//                students.add(studentsArray[3])
-//            } else {
-//                students.removeAt(3)
-//            }
-//            R.id.Nadezhda -> if (checked) {
-//                students.add(studentsArray[4])
-//            } else {
-//                students.removeAt(4)
-//            }
-//            R.id.Natali -> if (checked) {
-//                students.add(studentsArray[5])
-//            } else {
-//                students.removeAt(5)
-//            }
-//            R.id.Dasha -> if (checked) {
-//                students.add(studentsArray[6])
-//            } else {
-//                students.removeAt(6)
-//            }
-//            R.id.Dima -> if (checked) {
-//                students.add(studentsArray[7])
-//            } else {
-//                students.removeAt(7)
-//            }
-//            R.id.Egor -> if (checked) {
-//                students.add(studentsArray[8])
-//            } else {
-//                students.removeAt(8)
-//            }
-//            R.id.Anton -> if (checked) {
-//                students.add(studentsArray[9])
-//            } else {
-//                students.removeAt(9)
-//            }
-//            R.id.Nastya -> if (checked) {
-//                students.add(studentsArray[10])
-//            } else {
-//                students.removeAt(10)
-//            }
-//        }
-//    }
+    private fun sendResult(message: ArrayList<String>) {
+        setFragmentResult(REQUEST_KEY, bundleOf(BUNDLE_KEY to message))
+        parentFragmentManager.popBackStack()
+    }
 }
-//    private fun sendResult() {
-//        setResult(RESULT_OK, Intent().apply {
-//            putExtra(EXTRA, students)
-//        })
-//        finish()
-//    }
+
 

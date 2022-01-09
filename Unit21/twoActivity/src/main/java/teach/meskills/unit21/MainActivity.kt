@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import teach.meskills.unit21.Checkboxes.Companion.EXTRA
-import teach.meskills.unit21.Checkboxes.Companion.students
+
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
         val resultCode = activityResult.resultCode
         val data = activityResult.data
         if (resultCode == RESULT_OK) {
-            data?.getStringArrayListExtra(EXTRA)
+            val students = data?.getStringArrayListExtra(EXTRA)
             findViewById<Button>(R.id.roll).setOnClickListener {
-                chosen.text = students[Random.nextInt(students.size)]
+                chosen.text = students?.get(Random.nextInt(students.size))
             }
         }
     }
@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         chosen = findViewById(R.id.chosen)
         findViewById<Button>(R.id.choose).setOnClickListener {
             getContent.launch(Intent(this, Checkboxes::class.java))
-            students.clear()
         }
     }
 }

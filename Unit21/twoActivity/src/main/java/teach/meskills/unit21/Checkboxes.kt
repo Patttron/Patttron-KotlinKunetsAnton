@@ -1,6 +1,5 @@
 package teach.meskills.unit21
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -10,14 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import java.util.ArrayList
 
 class Checkboxes : AppCompatActivity() {
+
     companion object {
         const val EXTRA = "Students"
-
-        @SuppressLint("StaticFieldLeak")
-        var btnOk: Button? = null
-        var studentsArray = ArrayList<String>()
-        var students = ArrayList<String>()
     }
+
+    private var btnOk: Button? = null
+    var students = ArrayList<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,17 +32,6 @@ class Checkboxes : AppCompatActivity() {
         findViewById<CheckBox?>(R.id.Egor)
         findViewById<CheckBox?>(R.id.Anton)
         findViewById<CheckBox?>(R.id.Nastya)
-        studentsArray.add(0, "Stas")
-        studentsArray.add(1, "Alex")
-        studentsArray.add(2, "Sasha")
-        studentsArray.add(3, "Marina")
-        studentsArray.add(4, "Nadezhda")
-        studentsArray.add(5, "Natasha")
-        studentsArray.add(6, "Dasha")
-        studentsArray.add(7, "Dima")
-        studentsArray.add(8, "Egor")
-        studentsArray.add(9, "Anton")
-        studentsArray.add(10, "Nastya")
         btnOk = findViewById(R.id.btnOk)
         btnOk!!.setOnClickListener {
             sendResult()
@@ -53,61 +41,61 @@ class Checkboxes : AppCompatActivity() {
     fun onCheckboxClick(view: View?) {
         val checkBox = view as CheckBox
         val checked = checkBox.isChecked
-        when (view.getId()) {
+        when (view.id) {
             R.id.Stas -> if (checked) {
-                students.add(studentsArray[0])
+                students.add("Stas")
             } else {
-                students.removeAt(0)
+                students.remove("Stas")
             }
             R.id.Alex -> if (checked) {
-                students.add(studentsArray[1])
+                students.add("Alex")
             } else {
-                students.removeAt(1)
+                students.remove("Alex")
             }
             R.id.Sasha -> if (checked) {
-                students.add(studentsArray[2])
+                students.add("Sasha")
             } else {
-                students.removeAt(2)
+                students.remove("Sasha")
             }
             R.id.Marina -> if (checked) {
-                students.add(studentsArray[3])
+                students.add("Marina")
             } else {
-                students.removeAt(3)
+                students.remove("Marina")
             }
             R.id.Nadezhda -> if (checked) {
-                students.add(studentsArray[4])
+                students.add("Nadezhda")
             } else {
-                students.removeAt(4)
+                students.remove("Nadezhda")
             }
             R.id.Natali -> if (checked) {
-                students.add(studentsArray[5])
+                students.add("Natasha")
             } else {
-                students.removeAt(5)
+                students.remove("Natasha")
             }
             R.id.Dasha -> if (checked) {
-                students.add(studentsArray[6])
+                students.add("Dasha")
             } else {
-                students.removeAt(6)
+                students.remove("Dasha")
             }
             R.id.Dima -> if (checked) {
-                students.add(studentsArray[7])
+                students.add("Dima")
             } else {
-                students.removeAt(7)
+                students.remove("Dima")
             }
             R.id.Egor -> if (checked) {
-                students.add(studentsArray[8])
+                students.add("Egor")
             } else {
-                students.removeAt(8)
+                students.remove("Egor")
             }
             R.id.Anton -> if (checked) {
-                students.add(studentsArray[9])
+                students.add("Anton")
             } else {
-                students.removeAt(9)
+                students.remove("Anton")
             }
             R.id.Nastya -> if (checked) {
-                students.add(studentsArray[10])
+                students.add("Nastya")
             } else {
-                students.removeAt(10)
+                students.remove("Nastya")
             }
         }
     }
