@@ -24,19 +24,24 @@ class RollFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val chooseStudents: Button = view.findViewById(R.id.choose)
         chooseStudents.setOnClickListener {
-            val fragment = CheckboxesFragment.newInstance()
             parentFragmentManager
                 .beginTransaction()
-                .replace(R.id.container, fragment)
+                .replace(R.id.fragment1, CheckboxesFragment.newInstance())
                 .addToBackStack(null)
                 .commit()
         }
-            val chosen = view.findViewById<TextView>(R.id.result)
-            setFragmentResultListener(CheckboxesFragment.REQUEST_KEY) { _, bundle ->
-                val students = bundle.getStringArrayList(CheckboxesFragment.BUNDLE_KEY)
-                view.findViewById<Button>(R.id.roll).setOnClickListener {
-                    chosen.text = students?.get(Random.nextInt(students.size))
+        val chosen = view.findViewById<TextView>(R.id.result)
+        setFragmentResultListener(CheckboxesFragment.REQUEST_KEY) { _, bundle ->
+            val students = bundle.getStringArrayList(CheckboxesFragment.BUNDLE_KEY)
+            view.findViewById<Button>(R.id.roll).setOnClickListener {
+                if (students != null) {
+                    if (students.size != 0) {
+                        chosen.text = students[Random.nextInt(students.size)]
+                    } else {
+                        chosen.text = "Choose some students"
+                    }
                 }
             }
         }
     }
+}
