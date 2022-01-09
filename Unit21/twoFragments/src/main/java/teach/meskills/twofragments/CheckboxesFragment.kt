@@ -1,5 +1,6 @@
 package teach.meskills.twofragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +22,7 @@ class CheckboxesFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         }
     }
 
-    var students = ArrayList<String>()
+    private var students = ArrayList<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
