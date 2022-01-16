@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var inputSeconds: EditText
     private lateinit var text: TextView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
         val viewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
         findViewById<Button>(R.id.start).setOnClickListener {
+            input = inputSeconds.text.toString().toInt()
             if (timerState != TimerState.STARTED) {
                 viewModel.start()
             }
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             vibratorManager.defaultVibrator
         } else {
             this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-                   }
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrator.vibrate(
                 VibrationEffect.createOneShot(
@@ -65,6 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        var input = 0
         private const val EXTRA_STATE = "extra_state"
         var timerState = TimerState.CREATED
     }
