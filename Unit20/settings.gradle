@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Unit20"
 include ':app'
+include ':timer'
