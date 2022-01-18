@@ -13,34 +13,32 @@ class MainActivity : AppCompatActivity() {
     private lateinit var inputSeconds: EditText
     private lateinit var text: TextView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         inputSeconds = findViewById(R.id.inputSeconds)
         text = findViewById(R.id.text)
-        savedInstanceState?.let {
-            timerState = savedInstanceState.getSerializable(EXTRA_STATE) as TimerState
-        }
         val viewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
+        viewModel.timerStateLiveData.value = false
         findViewById<Button>(R.id.start).setOnClickListener {
-            input = inputSeconds.text.toString().toInt()
-            if (timerState != TimerState.STARTED) {
-                viewModel.start()
-            }
-            if (timerState == TimerState.ENDED) {
+            if (inputSeconds.text.isNotEmpty()) {
+                input = inputSeconds.text.toString().toInt()
+                if (viewModel.timerStateLiveData.value == false) {
+                    viewModel.start()
+                }
                 vibrate()
+            } else {
+                text.text = "Enter some number"
             }
         }
         findViewById<Button>(R.id.pause).setOnClickListener {
-            if (timerState != TimerState.ENDED) {
+            if (viewModel.timerStateLiveData.value!!) {
                 viewModel.pause()
             }
         }
         findViewById<Button>(R.id.reset).setOnClickListener {
-            if (timerState != TimerState.ENDED) {
-                viewModel.reset()
-            }
+            viewModel.reset()
+
         }
         viewModel.someData.observe(this, Observer { text.text = it.toString() })
     }
@@ -68,7 +66,5 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         var input = 0
-        private const val EXTRA_STATE = "extra_state"
-        var timerState = TimerState.CREATED
     }
 }
