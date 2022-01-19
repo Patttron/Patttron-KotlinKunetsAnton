@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.checkbox.*
+import kotlinx.android.synthetic.main.roll_activity.*
 import kotlin.random.Random
 
 class RollFragment : Fragment() {
@@ -22,23 +22,22 @@ class RollFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val chooseStudents: Button = view.findViewById(R.id.choose)
-        chooseStudents.setOnClickListener {
+        choose.setOnClickListener {
             parentFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragment1, CheckboxesFragment.newInstance())
+                .replace(R.id.fragment1, RecyclerViewFragment.newInstance())
                 .addToBackStack(null)
                 .commit()
         }
-        val chosen = view.findViewById<TextView>(R.id.result)
-        setFragmentResultListener(CheckboxesFragment.REQUEST_KEY) { _, bundle ->
-            val students = bundle.getStringArrayList(CheckboxesFragment.BUNDLE_KEY)
-            view.findViewById<Button>(R.id.roll).setOnClickListener {
+
+        roll.setOnClickListener {
+            viewModel.students.observe(viewLifecycleOwner) { students ->
                 if (students != null) {
-                    if (students.size != 0) {
-                        chosen.text = students[Random.nextInt(students.size)]
+                    val checkStudents = students.filter { it.isChecked }
+                    if (checkStudents.isNotEmpty()) {
+                        result.text = checkStudents[Random.nextInt(checkStudents.size)].name
                     } else {
-                        chosen.text = "Choose some students"
+                        result.text = "Choose some students"
                     }
                 }
             }
