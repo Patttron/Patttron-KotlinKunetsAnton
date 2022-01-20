@@ -29,7 +29,9 @@ class RollFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
-
+        val viewModel = ViewModelProvider(
+            requireActivity()
+        ).get(CheckboxViewModel::class.java)
         roll.setOnClickListener {
             viewModel.students.observe(viewLifecycleOwner) { students ->
                 if (students != null) {
