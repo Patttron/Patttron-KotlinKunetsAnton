@@ -31,15 +31,14 @@ class RollFragment : Fragment() {
                 .commit()
         }
         val chosen = view.findViewById<TextView>(R.id.result)
+        view.findViewById<Button>(R.id.roll).setOnClickListener {
+            chosen.text = "Choose some student"
+        }
         setFragmentResultListener(CheckboxesFragment.REQUEST_KEY) { _, bundle ->
             val students = bundle.getStringArrayList(CheckboxesFragment.BUNDLE_KEY)
             view.findViewById<Button>(R.id.roll).setOnClickListener {
                 if (students != null) {
-                    if (students.size != 0) {
-                        chosen.text = students[Random.nextInt(students.size)]
-                    } else {
-                        chosen.text = "Choose some students"
-                    }
+                    chosen.text = students[Random.nextInt(students.size)]
                 }
             }
         }

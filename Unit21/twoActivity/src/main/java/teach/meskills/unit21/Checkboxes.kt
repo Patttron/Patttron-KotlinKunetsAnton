@@ -14,9 +14,7 @@ class Checkboxes : AppCompatActivity() {
         const val EXTRA = "Students"
     }
 
-    private var btnOk: Button? = null
-    var students = ArrayList<String>()
-
+    private val students = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +30,7 @@ class Checkboxes : AppCompatActivity() {
         findViewById<CheckBox?>(R.id.Egor)
         findViewById<CheckBox?>(R.id.Anton)
         findViewById<CheckBox?>(R.id.Nastya)
-        btnOk = findViewById(R.id.btnOk)
-        btnOk!!.setOnClickListener {
+        findViewById<Button>(R.id.btnOk).setOnClickListener {
             sendResult()
         }
     }
