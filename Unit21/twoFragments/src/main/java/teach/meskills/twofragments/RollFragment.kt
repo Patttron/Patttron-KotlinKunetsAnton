@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.android.synthetic.main.checkbox.*
 import kotlinx.android.synthetic.main.roll_activity.*
 import kotlin.random.Random
 
@@ -33,8 +33,10 @@ class RollFragment : Fragment() {
             requireActivity()
         ).get(CheckboxViewModel::class.java)
         roll.setOnClickListener {
+            val anim = AnimationUtils.loadAnimation(context, R.anim.animation)
             viewModel.students.observe(viewLifecycleOwner) { students ->
                 if (students != null) {
+                    result.startAnimation(anim)
                     val checkStudents = students.filter { it.isChecked }
                     if (checkStudents.isNotEmpty()) {
                         result.text = checkStudents[Random.nextInt(checkStudents.size)].name

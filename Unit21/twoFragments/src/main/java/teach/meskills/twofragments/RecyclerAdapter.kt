@@ -2,15 +2,9 @@ package teach.meskills.twofragments
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 
-class RecyclerAdapter : RecyclerView.Adapter<RecyclerViewHolder>() {
-
-    var students: List<Student> = emptyList()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+class RecyclerAdapter : ListAdapter<Student, RecyclerViewHolder>(CustomDiffUtils()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         return RecyclerViewHolder(
@@ -20,10 +14,8 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        val item = students[position]
+        val item = getItem(position)
         holder.change(item)
         holder.name.text = item.name
     }
-
-    override fun getItemCount() = students.size
 }

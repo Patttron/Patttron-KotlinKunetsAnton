@@ -9,9 +9,9 @@ class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val name = itemView.findViewById<TextView>(R.id.nameStudent)
     val isCheck = itemView.findViewById<CheckBox>(R.id.checkboxStudent)
 
-    fun change(student: Student){
-       isCheck.setOnCheckedChangeListener { buttonView, isChecked ->
-             student.isChecked = isChecked
+    fun change(student: Student) {
+        isCheck.setOnCheckedChangeListener { buttonView, isChecked ->
+            student.isChecked = isChecked
         }
     }
 }
